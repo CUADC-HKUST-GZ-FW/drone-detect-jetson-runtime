@@ -1,0 +1,174 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --line: #d6dbe1;
+  --ink: #17202a;
+  --muted: #607080;
+  --accent: #1f6feb;
+  --panel: #ffffff;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+}
+
+.topbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 17px;
+  min-width: 130px;
+}
+
+nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+button {
+  height: 34px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+button.active,
+button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+main {
+  padding: 18px;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(420px, 1.1fr);
+  gap: 18px;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  font-weight: 650;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: end;
+  padding: 0 0 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+input,
+select {
+  height: 34px;
+  min-width: 170px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 0 9px;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  background: #f9fafb;
+}
+
+pre {
+  min-height: 320px;
+  max-height: calc(100vh - 180px);
+  overflow: auto;
+  margin: 0;
+  padding: 12px;
+  background: #0f1720;
+  color: #dce7f3;
+  border: 1px solid #202b37;
+  font: 12px/1.45 Consolas, "Liberation Mono", monospace;
+  white-space: pre-wrap;
+}
+
+.path-link {
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    height: auto;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 12px;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  input,
+  select {
+    min-width: 140px;
+  }
+}

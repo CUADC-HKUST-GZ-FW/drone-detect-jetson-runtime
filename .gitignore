@@ -1,0 +1,62 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# macOS/editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Local results and runtime state
+results/
+logs/
+*.log
+*.pid
+*.token
+*.before
+*.tmp
+
+# Lab-local audit notes. Keep sanitized summaries in docs if they are useful.
+docs/environment-audit.md
+docs/environment-completion.md
+
+# Private deployment overrides. Commit only *.example files.
+deploy/*.env
+!deploy/*.env.example
+.env
+.env.*
+!.env.example
+
+# Large model/runtime artifacts. Publish these through releases, LFS, or object storage.
+models/
+weights/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.raw.engine
+*.cache
+*.plan
+
+# Videos and datasets
+assets/*.mp4
+assets/*.mkv
+assets/*.ts
+assets/*.avi
+assets/*.mov
+datasets/
+data/
+
+# Native build outputs and copied kernel modules
+build/
+native/build/
+native/*_runner
+*.o
+*.so
+*.ko

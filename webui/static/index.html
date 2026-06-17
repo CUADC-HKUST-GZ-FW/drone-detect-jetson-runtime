@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drone Detect Admin</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Drone Detect</div>
+    <nav>
+      <button data-tab="overview" class="active">总览</button>
+      <button data-tab="traffic">网络控制</button>
+      <button data-tab="video">视频链路</button>
+      <button data-tab="yolo">YOLO</button>
+      <button data-tab="results">结果</button>
+    </nav>
+    <button id="refresh">刷新</button>
+  </header>
+
+  <main>
+    <section id="overview" class="view active">
+      <div class="split">
+        <div>
+          <h1>节点状态</h1>
+          <table id="statusTable"></table>
+        </div>
+        <div>
+          <h1>运行态输出</h1>
+          <pre id="statusLog"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="traffic" class="view">
+      <div class="toolbar">
+        <label>配置 <input id="tcConfig" value="configs/degraded_policy.example.json"></label>
+        <label>接口 <input id="tcInterface" value="eth0"></label>
+        <label>目标IP <input id="tcDst" placeholder="JETSON_B_IP"></label>
+        <button id="tcDry">Dry-run</button>
+        <button id="tcApply">Apply</button>
+        <button id="tcStatus">Status</button>
+        <button id="tcClear">Clear</button>
+      </div>
+      <pre id="tcOutput"></pre>
+    </section>
+
+    <section id="video" class="view">
+      <div class="toolbar">
+        <label>角色
+          <select id="streamRole">
+            <option value="receiver">receiver</option>
+            <option value="sender">sender</option>
+          </select>
+        </label>
+        <label>目标IP <input id="streamDest" placeholder="sender 需要"></label>
+        <label>端口 <input id="streamPort" type="number" value="5000"></label>
+        <label>秒数 <input id="streamDuration" type="number" value="20"></label>
+        <button id="streamStart">启动</button>
+      </div>
+      <pre id="streamOutput"></pre>
+    </section>
+
+    <section id="yolo" class="view">
+      <div class="toolbar">
+        <label>模型 <input id="yoloModel" value="yolov26n"></label>
+        <label>视频 <input id="yoloSource" value="assets/test_20s.mp4"></label>
+        <label>帧数 <input id="yoloFrames" type="number" value="5"></label>
+        <label>设备 <input id="yoloDevice" value="0"></label>
+        <button id="yoloRun">GPU Smoke</button>
+      </div>
+      <pre id="yoloOutput"></pre>
+    </section>
+
+    <section id="results" class="view">
+      <div class="toolbar">
+        <button id="loadResults">加载结果</button>
+      </div>
+      <table id="resultsTable"></table>
+      <pre id="filePreview"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
