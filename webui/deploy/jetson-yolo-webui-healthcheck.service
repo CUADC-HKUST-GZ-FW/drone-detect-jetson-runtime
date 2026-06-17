@@ -1,0 +1,9 @@
+[Unit]
+Description=Jetson YOLO WebUI Healthcheck
+After=jetson-yolo-webui.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/jetson-yolo-webui.env
+ExecStart=/opt/jetson-yolo-webui/current/webui/deploy/restart_if_unhealthy.sh
+

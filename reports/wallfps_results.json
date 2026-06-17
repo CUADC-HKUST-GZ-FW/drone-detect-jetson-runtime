@@ -1,0 +1,1234 @@
+{
+  "environment": {
+    "generated_at": "2026-06-01T04:20:13+00:00",
+    "gst_decoder": "ok",
+    "jetson_clocks": "sudo: a password is required",
+    "l4t": "# R36 (release), REVISION: 5.0, GCID: 43688277, BOARD: generic, EABI: aarch64, DATE: Fri Jan 16 03:50:45 UTC 2026\n# KERNEL_VARIANT: oot\nTARGET_USERSPACE_LIB_DIR=nvidia\nTARGET_USERSPACE_LIB_DIR_PATH=usr/lib/aarch64-linux-gnu/nvidia",
+    "nvpmodel_before": "NVPM VERB: Config file: /etc/nvpmodel.conf\nNVPM VERB: parsing done for /etc/nvpmodel.conf\nNVPM VERB: Current mode: NV Power Mode: 40W\n4\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_0: PATH /sys/devices/system/cpu/cpu0/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_1: PATH /sys/devices/system/cpu/cpu1/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_2: PATH /sys/devices/system/cpu/cpu2/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_3: PATH /sys/devices/system/cpu/cpu3/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_4: PATH /sys/devices/system/cpu/cpu4/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_5: PATH /sys/devices/system/cpu/cpu5/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_6: PATH /sys/devices/system/cpu/cpu6/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM CPU_ONLINE: ARG CORE_7: PATH /sys/devices/system/cpu/cpu7/online: REAL_VAL: 1 CONF_VAL: 1\nNVPM VERB: PARAM FBP_POWER_GATING: ARG FBP_PG_MASK: PATH /sys/devices/platform/gpu.0/fbp_pg_mask: REAL_VAL: 2 CONF_VAL: 2\nNVPM VERB: PARAM TPC_POWER_GATING: ARG TPC_PG_MASK: PATH /sys/devices/platform/gpu.0/tpc_pg_mask: REAL_VAL: 240 CONF_VAL: 240\nNVPM VERB: PARAM GPU_POWER_CONTROL_ENABLE: ARG GPU_PWR_CNTL_EN: PATH /sys/devices/platform/gpu.0/power/control: REAL_VAL: auto CONF_VAL: on\nNVPM VERB: PARAM CPU_A78_0: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_0: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_1: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_1: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_2: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_2: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_3: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_3: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_4: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_4: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_5: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_5: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_6: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_6: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM CPU_A78_7: ARG MIN_FREQ: PATH /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq: REAL_VAL: 729600 CONF_VAL: 729600\nNVPM VERB: PARAM CPU_A78_7: ARG MAX_FREQ: PATH /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq: REAL_VAL: 1497600 CONF_VAL: 1497600\nNVPM VERB: PARAM GPU: ARG MIN_FREQ: PATH /sys/devices/platform/17000000.gpu/devfreq_dev/min_freq: REAL_VAL: 306000000 CONF_VAL: 0\nNVPM VERB: PARAM GPU: ARG MAX_FREQ: PATH /sys/devices/platform/17000000.gpu/devfreq_dev/max_freq: REAL_VAL: 1173000000 CONF_VAL: 1173000000\nNVPM VERB: PARAM GPU_POWER_CONTROL_DISABLE: ARG GPU_PWR_CNTL_DIS: PATH /sys/devices/platform/gpu.0/power/control: REAL_VAL: auto CONF_VAL: auto\nNVPM VERB: PARAM EMC: ARG MAX_FREQ: PATH /sys/kernel/nvpmodel_clk_cap/emc: REAL_VAL: 3199000000 CONF_VAL: 9223372036854775807\nNVPM VERB: PARAM DLA0_CORE: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/15880000.nvdla0/clk_cap/dla0_core: REAL_VAL: 908800000 CONF_VAL: 908800000\nNVPM VERB: PARAM DLA1_CORE: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/158c0000.nvdla1/clk_cap/dla1_core: REAL_VAL: 908800000 CONF_VAL: 908800000\nNVPM VERB: PARAM DLA0_FALCON: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/15880000.nvdla0/clk_cap/dla0_falcon: REAL_VAL: 435200000 CONF_VAL: 435200000\nNVPM VERB: PARAM DLA1_FALCON: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/158c0000.nvdla1/clk_cap/dla1_falcon: REAL_VAL: 435200000 CONF_VAL: 435200000\nNVPM VERB: PARAM PVA0_VPS: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/16000000.pva0/clk_cap/pva0_vps: REAL_VAL: 704000000 CONF_VAL: 704000000\nNVPM VERB: PARAM PVA0_AXI: ARG MAX_FREQ: PATH /sys/devices/platform/bus@0/13e00000.host1x/16000000.pva0/clk_cap/pva0_cpu_axi: REAL_VAL: 486400000 CONF_VAL: 486400000",
+    "opencv_gstreamer": "    GStreamer:                   YES (1.20.3)",
+    "video_info": "{\"duration_sec\": 299.73333333333335, \"fps\": 30.0, \"frames\": 8992, \"height\": 720, \"opened\": true, \"path\": \"/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4\", \"width\": 1280}"
+  },
+  "results": [
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 4711,
+      "input_mode": "baseline_ultralytics_video",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 10.629992850459526,
+      "mean_read_ms": null,
+      "mean_wall_ms": 25.475902041608443,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 10.61681000282988,
+      "p50_wall_ms": 25.613671983592212,
+      "p90_predict_ms": 10.657867998816073,
+      "p90_wall_ms": 26.34508701157756,
+      "p99_predict_ms": 10.898093809373677,
+      "p99_wall_ms": 27.260590021614913,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.601537815126,
+          "max": 56.281,
+          "min": 54.781
+        },
+        "cpu_util_pct": {
+          "avg": 15.946428571428571,
+          "max": 71.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.26278151260499,
+          "max": 54.031,
+          "min": 52.437
+        },
+        "gr3d": {
+          "avg": 47.69747899159664,
+          "max": 70.0,
+          "min": 20.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4509.9747899159665,
+          "max": 4515.0,
+          "min": 4503.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 55.60050420168063,
+          "max": 56.281,
+          "min": 54.781
+        },
+        "vdd_in_mw": {
+          "avg": 6872.109243697479,
+          "max": 7022.0,
+          "min": 6781.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_baseline_ultralytics_video.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 39.252748360056955,
+      "wall_sec": 120.01707388198702,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 4648,
+      "input_mode": "opencv_video_capture",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 21.363876169344714,
+      "mean_read_ms": 4.446331490746502,
+      "mean_wall_ms": 25.81196238600799,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 21.464388497406617,
+      "p50_wall_ms": 26.032733483589254,
+      "p90_predict_ms": 21.898107902961783,
+      "p90_wall_ms": 26.50907310890034,
+      "p99_predict_ms": 22.77502024633577,
+      "p99_wall_ms": 27.435823902196713,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.835235294117595,
+          "max": 56.25,
+          "min": 55.593
+        },
+        "cpu_util_pct": {
+          "avg": 16.16701680672269,
+          "max": 75.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.47102521008398,
+          "max": 53.875,
+          "min": 53.093
+        },
+        "gr3d": {
+          "avg": 45.470588235294116,
+          "max": 69.0,
+          "min": 16.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4514.46218487395,
+          "max": 4517.0,
+          "min": 4511.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 55.82868067226886,
+          "max": 56.25,
+          "min": 55.593
+        },
+        "vdd_in_mw": {
+          "avg": 6859.394957983193,
+          "max": 7102.0,
+          "min": 6741.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_opencv_video_capture.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 38.72574227040901,
+      "wall_sec": 120.02352253301069,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 5481,
+      "gst_launch_rc": 0,
+      "gst_pipeline": "filesrc location=/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4 ! qtdemux ! h264parse ! nvv4l2decoder enable-max-performance=1 ! nvvidconv ! video/x-raw,format=BGRx ! videoconvert ! video/x-raw,format=BGR ! appsink drop=true sync=false max-buffers=2",
+      "input_mode": "gstreamer_hwdecode_appsink",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 21.189647949270505,
+      "mean_read_ms": 0.6994727317206347,
+      "mean_wall_ms": 21.890366248020076,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; nvv4l2decoder+nvvidconv+appsink; not DeepStream zero-copy",
+      "p50_predict_ms": 20.99948699469678,
+      "p50_wall_ms": 21.628374001011252,
+      "p90_predict_ms": 22.953186999075115,
+      "p90_wall_ms": 23.620088992174715,
+      "p99_predict_ms": 23.591134406160563,
+      "p99_wall_ms": 24.29692420992069,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.79640336134448,
+          "max": 57.25,
+          "min": 56.093
+        },
+        "cpu_util_pct": {
+          "avg": 23.625,
+          "max": 74.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.42060504201675,
+          "max": 54.937,
+          "min": 53.718
+        },
+        "gr3d": {
+          "avg": 54.64705882352941,
+          "max": 70.0,
+          "min": 34.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4550.857142857143,
+          "max": 4561.0,
+          "min": 4542.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.80532773109238,
+          "max": 57.25,
+          "min": 56.093
+        },
+        "vdd_in_mw": {
+          "avg": 7930.033613445378,
+          "max": 8186.0,
+          "min": 7303.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_gstreamer_hwdecode_appsink.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 45.603295469114364,
+      "wall_sec": 120.18868249800289,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 5283,
+      "input_mode": "predecoded_frame_ring",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 22.70578050774344,
+      "mean_read_ms": null,
+      "mean_wall_ms": 22.70578050774344,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; predecoded_ring_frames=300; decode excluded from measurement",
+      "p50_predict_ms": 23.03276999737136,
+      "p50_wall_ms": 23.03276999737136,
+      "p90_predict_ms": 23.304739990271628,
+      "p90_wall_ms": 23.304739990271628,
+      "p99_predict_ms": 24.332233627210375,
+      "p99_wall_ms": 24.332233627210375,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.858126050420125,
+          "max": 56.531,
+          "min": 55.406
+        },
+        "cpu_util_pct": {
+          "avg": 13.423319327731093,
+          "max": 70.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.53085714285709,
+          "max": 54.218,
+          "min": 53.093
+        },
+        "gr3d": {
+          "avg": 54.403361344537814,
+          "max": 68.0,
+          "min": 36.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4523.705882352941,
+          "max": 4527.0,
+          "min": 4520.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 55.85495798319322,
+          "max": 56.531,
+          "min": 55.406
+        },
+        "vdd_in_mw": {
+          "avg": 6796.495798319328,
+          "max": 6902.0,
+          "min": 6701.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_predecoded_frame_ring.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 44.02338747760931,
+      "wall_sec": 120.00439545200788,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 5983,
+      "input_mode": "synthetic_numpy_frame_loop",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 20.04954699153042,
+      "mean_read_ms": null,
+      "mean_wall_ms": 20.04954699153042,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; synthetic_numpy_frame; no decode and no real image diversity",
+      "p50_predict_ms": 20.168094983091578,
+      "p50_wall_ms": 20.168094983091578,
+      "p90_predict_ms": 20.512567803962156,
+      "p90_wall_ms": 20.512567803962156,
+      "p99_predict_ms": 21.6083403036464,
+      "p99_wall_ms": 21.6083403036464,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.720798319327685,
+          "max": 56.218,
+          "min": 55.343
+        },
+        "cpu_util_pct": {
+          "avg": 12.906512605042018,
+          "max": 66.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.42641176470584,
+          "max": 53.906,
+          "min": 53.062
+        },
+        "gr3d": {
+          "avg": 56.588235294117645,
+          "max": 71.0,
+          "min": 40.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4554.394957983193,
+          "max": 4594.0,
+          "min": 4528.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 55.72105882352937,
+          "max": 56.218,
+          "min": 55.343
+        },
+        "vdd_in_mw": {
+          "avg": 6862.64705882353,
+          "max": 7062.0,
+          "min": 6781.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_synthetic_numpy_frame_loop.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 49.85414534167695,
+      "wall_sec": 120.01008058598381,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "failed_frames": 1,
+      "frames_processed": null,
+      "input_mode": "trtexec_raw_no_data_transfers",
+      "input_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_int8.engine",
+      "mean_predict_ms": null,
+      "mean_read_ms": null,
+      "mean_wall_ms": null,
+      "measure_sec": 120,
+      "model_name": "yolo26n.pt",
+      "notes": "trtexec failed before measurement: LLVM ERROR: out of memory while loading TensorRT standard plugins; raw TensorRT probe unavailable; not video wall FPS",
+      "p50_wall_ms": null,
+      "p90_wall_ms": null,
+      "p99_wall_ms": null,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.224599999999995,
+          "max": 55.5,
+          "min": 55.062
+        },
+        "cpu_util_pct": {
+          "avg": 15.45,
+          "max": 100.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 52.6622,
+          "max": 52.781,
+          "min": 52.531
+        },
+        "gr3d": {
+          "avg": 0.0,
+          "max": 0.0,
+          "min": 0.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 3442.6,
+          "max": 3444.0,
+          "min": 3441.0
+        },
+        "samples": 5,
+        "tj_temp_c": {
+          "avg": 55.1682,
+          "max": 55.281,
+          "min": 55.062
+        },
+        "vdd_in_mw": {
+          "avg": 6132.8,
+          "max": 6310.0,
+          "min": 5747.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_int8_trtexec_raw_no_data_transfers.log",
+      "trtexec_log": "/home/jetson/jetson_wallfps_optimization/logs/yolo26n_int8_trtexec_raw_no_data_transfers.log",
+      "trtexec_rc": -6,
+      "video_resolution": "none",
+      "wall_fps": null,
+      "wall_sec": 5.457977352984017,
+      "warmup_sec": 10
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_sanity/work/weights/yolo11n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 4750,
+      "input_mode": "baseline_ultralytics_video",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 10.238957450302367,
+      "mean_read_ms": null,
+      "mean_wall_ms": 25.268304480209114,
+      "measure_sec": 120.0,
+      "model_name": "yolo11n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 10.228819999611005,
+      "p50_wall_ms": 25.303080008598045,
+      "p90_predict_ms": 10.267605015542358,
+      "p90_wall_ms": 26.246285400702618,
+      "p99_predict_ms": 10.489628672366962,
+      "p99_wall_ms": 27.102459484885912,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.11520168067222,
+          "max": 56.906,
+          "min": 55.75
+        },
+        "cpu_util_pct": {
+          "avg": 16.52310924369748,
+          "max": 71.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.78795798319322,
+          "max": 54.5,
+          "min": 53.312
+        },
+        "gr3d": {
+          "avg": 47.36974789915966,
+          "max": 67.0,
+          "min": 19.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4636.193277310925,
+          "max": 4643.0,
+          "min": 4610.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.116764705882304,
+          "max": 56.906,
+          "min": 55.75
+        },
+        "vdd_in_mw": {
+          "avg": 6929.72268907563,
+          "max": 7383.0,
+          "min": 6821.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_baseline_ultralytics_video.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 39.575238377615705,
+      "wall_sec": 120.02454551699338,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_sanity/work/weights/yolo11n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 4712,
+      "input_mode": "opencv_video_capture",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 20.999064196631668,
+      "mean_read_ms": 4.459717020970591,
+      "mean_wall_ms": 25.460523880863946,
+      "measure_sec": 120.0,
+      "model_name": "yolo11n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 21.094721494591795,
+      "p50_wall_ms": 25.64641649951227,
+      "p90_predict_ms": 21.64661859278567,
+      "p90_wall_ms": 26.351791006163694,
+      "p99_predict_ms": 22.405324033752553,
+      "p99_wall_ms": 27.138813035853673,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.106999999999935,
+          "max": 56.718,
+          "min": 55.75
+        },
+        "cpu_util_pct": {
+          "avg": 16.22373949579832,
+          "max": 71.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.75042016806718,
+          "max": 54.25,
+          "min": 53.375
+        },
+        "gr3d": {
+          "avg": 47.35294117647059,
+          "max": 68.0,
+          "min": 17.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4644.226890756303,
+          "max": 4651.0,
+          "min": 4637.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.1125210084033,
+          "max": 56.718,
+          "min": 55.75
+        },
+        "vdd_in_mw": {
+          "avg": 6915.529411764706,
+          "max": 7062.0,
+          "min": 6781.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_opencv_video_capture.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 39.25876140666106,
+      "wall_sec": 120.024163553986,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_sanity/work/weights/yolo11n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 5496,
+      "gst_launch_rc": 0,
+      "gst_pipeline": "filesrc location=/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4 ! qtdemux ! h264parse ! nvv4l2decoder enable-max-performance=1 ! nvvidconv ! video/x-raw,format=BGRx ! videoconvert ! video/x-raw,format=BGR ! appsink drop=true sync=false max-buffers=2",
+      "input_mode": "gstreamer_hwdecode_appsink",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 21.121673455140403,
+      "mean_read_ms": 0.7043492403541409,
+      "mean_wall_ms": 21.82735667572744,
+      "measure_sec": 120.0,
+      "model_name": "yolo11n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; nvv4l2decoder+nvvidconv+appsink; not DeepStream zero-copy",
+      "p50_predict_ms": 21.200047005550005,
+      "p50_wall_ms": 21.84554300038144,
+      "p90_predict_ms": 23.083508014678955,
+      "p90_wall_ms": 23.766320504364558,
+      "p99_predict_ms": 23.476613995444495,
+      "p99_wall_ms": 24.177311584935524,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 57.09203361344532,
+          "max": 57.656,
+          "min": 56.656
+        },
+        "cpu_util_pct": {
+          "avg": 23.59453781512605,
+          "max": 74.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.71496638655457,
+          "max": 55.187,
+          "min": 54.218
+        },
+        "gr3d": {
+          "avg": 53.705882352941174,
+          "max": 67.0,
+          "min": 32.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4657.403361344538,
+          "max": 4661.0,
+          "min": 4650.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 57.0878403361344,
+          "max": 57.656,
+          "min": 56.656
+        },
+        "vdd_in_mw": {
+          "avg": 7980.865546218487,
+          "max": 8186.0,
+          "min": 7503.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_gstreamer_hwdecode_appsink.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 45.73426375994096,
+      "wall_sec": 120.17248225200456,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_sanity/work/weights/yolo11n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 5382,
+      "input_mode": "predecoded_frame_ring",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 22.28797319131705,
+      "mean_read_ms": null,
+      "mean_wall_ms": 22.28797319131705,
+      "measure_sec": 120.0,
+      "model_name": "yolo11n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; predecoded_ring_frames=300; decode excluded from measurement",
+      "p50_predict_ms": 22.607302002143115,
+      "p50_wall_ms": 22.607302002143115,
+      "p90_predict_ms": 22.8211508016102,
+      "p90_wall_ms": 22.8211508016102,
+      "p99_predict_ms": 23.67734940518858,
+      "p99_wall_ms": 23.67734940518858,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.15115126050414,
+          "max": 56.937,
+          "min": 55.656
+        },
+        "cpu_util_pct": {
+          "avg": 13.693277310924369,
+          "max": 68.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.83442857142852,
+          "max": 54.562,
+          "min": 53.281
+        },
+        "gr3d": {
+          "avg": 52.42016806722689,
+          "max": 67.0,
+          "min": 37.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4640.176470588235,
+          "max": 4644.0,
+          "min": 4635.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.14799999999994,
+          "max": 56.937,
+          "min": 55.656
+        },
+        "vdd_in_mw": {
+          "avg": 6863.285714285715,
+          "max": 7503.0,
+          "min": 6741.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_predecoded_frame_ring.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 44.84840104087714,
+      "wall_sec": 120.00427830402623,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_sanity/work/weights/yolo11n_640_int8.engine",
+      "failed_frames": 0,
+      "frames_processed": 6093,
+      "input_mode": "synthetic_numpy_frame_loop",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 19.687575368344724,
+      "mean_read_ms": null,
+      "mean_wall_ms": 19.687575368344724,
+      "measure_sec": 120.0,
+      "model_name": "yolo11n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; synthetic_numpy_frame; no decode and no real image diversity",
+      "p50_predict_ms": 19.838936015730724,
+      "p50_wall_ms": 19.838936015730724,
+      "p90_predict_ms": 20.00767780118622,
+      "p90_wall_ms": 20.00767780118622,
+      "p99_predict_ms": 21.013469913741574,
+      "p99_wall_ms": 21.013469913741574,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.16562184873945,
+          "max": 56.718,
+          "min": 55.812
+        },
+        "cpu_util_pct": {
+          "avg": 13.046218487394958,
+          "max": 65.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.900663865546164,
+          "max": 54.5,
+          "min": 53.406
+        },
+        "gr3d": {
+          "avg": 57.65546218487395,
+          "max": 67.0,
+          "min": 42.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4639.285714285715,
+          "max": 4647.0,
+          "min": 4634.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.164033613445326,
+          "max": 56.718,
+          "min": 55.781
+        },
+        "vdd_in_mw": {
+          "avg": 6941.134453781513,
+          "max": 7544.0,
+          "min": 6821.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_synthetic_numpy_frame_loop.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 50.770750381153675,
+      "wall_sec": 120.0100442529947,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "failed_frames": 1,
+      "frames_processed": null,
+      "input_mode": "trtexec_raw_no_data_transfers",
+      "input_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo11n_640_int8.engine",
+      "mean_predict_ms": null,
+      "mean_read_ms": null,
+      "mean_wall_ms": null,
+      "measure_sec": 120,
+      "model_name": "yolo11n.pt",
+      "notes": "trtexec failed before measurement: LLVM ERROR: out of memory while loading TensorRT standard plugins; raw TensorRT probe unavailable; not video wall FPS",
+      "p50_wall_ms": null,
+      "p90_wall_ms": null,
+      "p99_wall_ms": null,
+      "precision": "int8",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 55.25,
+          "max": 55.25,
+          "min": 55.25
+        },
+        "cpu_util_pct": {
+          "avg": 7.75,
+          "max": 27.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 53.031,
+          "max": 53.031,
+          "min": 53.031
+        },
+        "gr3d": {
+          "avg": 0.0,
+          "max": 0.0,
+          "min": 0.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 3445.0,
+          "max": 3445.0,
+          "min": 3445.0
+        },
+        "samples": 1,
+        "tj_temp_c": {
+          "avg": 55.25,
+          "max": 55.25,
+          "min": 55.25
+        },
+        "vdd_in_mw": {
+          "avg": 5707.0,
+          "max": 5707.0,
+          "min": 5707.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo11n_int8_trtexec_raw_no_data_transfers.log",
+      "trtexec_log": "/home/jetson/jetson_wallfps_optimization/logs/yolo11n_int8_trtexec_raw_no_data_transfers.log",
+      "trtexec_rc": -6,
+      "video_resolution": "none",
+      "wall_fps": null,
+      "wall_sec": 1.386798938998254,
+      "warmup_sec": 10
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 0,
+      "frames_processed": 4711,
+      "input_mode": "baseline_ultralytics_video",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 12.49896473731376,
+      "mean_read_ms": null,
+      "mean_wall_ms": 25.472347692210274,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 12.490354012697935,
+      "p50_wall_ms": 25.627775001339614,
+      "p90_predict_ms": 12.535251007648185,
+      "p90_wall_ms": 26.377815986052155,
+      "p99_predict_ms": 12.764633583719842,
+      "p99_wall_ms": 27.511642291210592,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.381235294117594,
+          "max": 57.093,
+          "min": 56.125
+        },
+        "cpu_util_pct": {
+          "avg": 17.34453781512605,
+          "max": 70.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.09810924369743,
+          "max": 54.75,
+          "min": 53.75
+        },
+        "gr3d": {
+          "avg": 52.1764705882353,
+          "max": 77.0,
+          "min": 26.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4756.63025210084,
+          "max": 4784.0,
+          "min": 4745.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.37573109243693,
+          "max": 57.093,
+          "min": 56.125
+        },
+        "vdd_in_mw": {
+          "avg": 7257.605042016807,
+          "max": 8186.0,
+          "min": 7102.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_baseline_ultralytics_video.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 39.25822274095807,
+      "wall_sec": 120.00033804599661,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 0,
+      "frames_processed": 4639,
+      "input_mode": "opencv_video_capture",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 20.893859086596066,
+      "mean_read_ms": 4.967190960826588,
+      "mean_wall_ms": 25.862919800920544,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed",
+      "p50_predict_ms": 20.90248098829761,
+      "p50_wall_ms": 25.88396897772327,
+      "p90_predict_ms": 21.403214801102877,
+      "p90_wall_ms": 26.749427994946018,
+      "p99_predict_ms": 22.54303220717702,
+      "p99_wall_ms": 28.042013617814515,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.56976470588231,
+          "max": 56.968,
+          "min": 56.25
+        },
+        "cpu_util_pct": {
+          "avg": 16.631302521008404,
+          "max": 71.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.289873949579786,
+          "max": 54.75,
+          "min": 53.906
+        },
+        "gr3d": {
+          "avg": 52.23529411764706,
+          "max": 77.0,
+          "min": 22.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4795.9327731092435,
+          "max": 4800.0,
+          "min": 4790.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.56347058823525,
+          "max": 56.968,
+          "min": 56.25
+        },
+        "vdd_in_mw": {
+          "avg": 7197.218487394958,
+          "max": 7463.0,
+          "min": 7062.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_opencv_video_capture.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 38.64928834151014,
+      "wall_sec": 120.02808328601532,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 0,
+      "frames_processed": 5597,
+      "gst_launch_rc": 0,
+      "gst_pipeline": "filesrc location=/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4 ! qtdemux ! h264parse ! nvv4l2decoder enable-max-performance=1 ! nvvidconv ! video/x-raw,format=BGRx ! videoconvert ! video/x-raw,format=BGR ! appsink drop=true sync=false max-buffers=2",
+      "input_mode": "gstreamer_hwdecode_appsink",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 20.723302095863435,
+      "mean_read_ms": 0.7092491498025464,
+      "mean_wall_ms": 21.433922989669032,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; nvv4l2decoder+nvvidconv+appsink; not DeepStream zero-copy",
+      "p50_predict_ms": 20.658150024246424,
+      "p50_wall_ms": 21.316700003808364,
+      "p90_predict_ms": 22.107926610624418,
+      "p90_wall_ms": 22.781587002100423,
+      "p99_predict_ms": 22.306634435663,
+      "p99_wall_ms": 22.996095579583198,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 57.63352941176465,
+          "max": 58.125,
+          "min": 56.812
+        },
+        "cpu_util_pct": {
+          "avg": 23.660714285714285,
+          "max": 73.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 55.36911764705877,
+          "max": 55.937,
+          "min": 54.468
+        },
+        "gr3d": {
+          "avg": 63.32773109243698,
+          "max": 78.0,
+          "min": 47.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4819.9747899159665,
+          "max": 4825.0,
+          "min": 4810.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 57.631428571428515,
+          "max": 58.125,
+          "min": 56.718
+        },
+        "vdd_in_mw": {
+          "avg": 8387.882352941177,
+          "max": 8747.0,
+          "min": 7945.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_gstreamer_hwdecode_appsink.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 46.57346868857553,
+      "wall_sec": 120.175717154023,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 0,
+      "frames_processed": 5643,
+      "input_mode": "predecoded_frame_ring",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 21.257369510297647,
+      "mean_read_ms": null,
+      "mean_wall_ms": 21.257369510297647,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; predecoded_ring_frames=300; decode excluded from measurement",
+      "p50_predict_ms": 21.370551985455677,
+      "p50_wall_ms": 21.370551985455677,
+      "p90_predict_ms": 21.57027277862653,
+      "p90_wall_ms": 21.57027277862653,
+      "p99_predict_ms": 22.74208649294451,
+      "p99_wall_ms": 22.74208649294451,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.71495798319322,
+          "max": 57.218,
+          "min": 56.25
+        },
+        "cpu_util_pct": {
+          "avg": 13.741596638655462,
+          "max": 64.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.53142016806717,
+          "max": 55.125,
+          "min": 54.093
+        },
+        "gr3d": {
+          "avg": 62.2436974789916,
+          "max": 77.0,
+          "min": 51.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4812.55462184874,
+          "max": 4815.0,
+          "min": 4810.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.70839495798314,
+          "max": 57.218,
+          "min": 56.25
+        },
+        "vdd_in_mw": {
+          "avg": 7287.798319327731,
+          "max": 7624.0,
+          "min": 7182.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_predecoded_frame_ring.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 47.021286481361415,
+      "wall_sec": 120.00947703199927,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_export_sec_this_run": 0.0,
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "engine_source": "copied:/home/jetson/jetson_yolo_formal_benchmark_full/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 0,
+      "frames_processed": 5769,
+      "input_mode": "synthetic_numpy_frame_loop",
+      "input_path": "/home/jetson/jetson_benchmark_assets/videos/benchmark_5min_720p30_coco_val2017_synthetic.mp4",
+      "mean_predict_ms": 20.79439715525963,
+      "mean_read_ms": null,
+      "mean_wall_ms": 20.79439715525963,
+      "measure_sec": 120.0,
+      "model_name": "yolo26n.pt",
+      "notes": "minimal_result_handling; save/show/verbose disabled; boxes not accessed; synthetic_numpy_frame; no decode and no real image diversity",
+      "p50_predict_ms": 20.930247992509976,
+      "p50_wall_ms": 20.930247992509976,
+      "p90_predict_ms": 21.122990804724395,
+      "p90_wall_ms": 21.122990804724395,
+      "p99_predict_ms": 22.24735411349684,
+      "p99_wall_ms": 22.24735411349684,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 56.49625210084028,
+          "max": 56.937,
+          "min": 56.156
+        },
+        "cpu_util_pct": {
+          "avg": 13.802521008403362,
+          "max": 64.0,
+          "min": 0.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 54.3050672268907,
+          "max": 54.781,
+          "min": 53.937
+        },
+        "gr3d": {
+          "avg": 64.97478991596638,
+          "max": 77.0,
+          "min": 55.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 4811.033613445378,
+          "max": 4814.0,
+          "min": 4807.0
+        },
+        "samples": 119,
+        "tj_temp_c": {
+          "avg": 56.496504201680615,
+          "max": 56.937,
+          "min": 56.156
+        },
+        "vdd_in_mw": {
+          "avg": 7293.226890756303,
+          "max": 7544.0,
+          "min": 7142.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_synthetic_numpy_frame_loop.log",
+      "video_resolution": "1280x720",
+      "wall_fps": 48.06920216843743,
+      "wall_sec": 120.01447371198446,
+      "warmup_sec": 10.0
+    },
+    {
+      "engine_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "failed_frames": 1,
+      "frames_processed": null,
+      "input_mode": "trtexec_raw_no_data_transfers",
+      "input_path": "/home/jetson/jetson_wallfps_optimization/engines/yolo26n_640_fp16.engine",
+      "mean_predict_ms": null,
+      "mean_read_ms": null,
+      "mean_wall_ms": null,
+      "measure_sec": 120,
+      "model_name": "yolo26n.pt",
+      "notes": "trtexec failed before measurement: LLVM ERROR: out of memory while loading TensorRT standard plugins; raw TensorRT probe unavailable; not video wall FPS",
+      "p50_wall_ms": null,
+      "p90_wall_ms": null,
+      "p99_wall_ms": null,
+      "precision": "fp16",
+      "target_imgsz": 640,
+      "tegrastats": {
+        "cpu_temp_c": {
+          "avg": 54.968,
+          "max": 54.968,
+          "min": 54.968
+        },
+        "cpu_util_pct": {
+          "avg": 7.0,
+          "max": 17.0,
+          "min": 1.0
+        },
+        "exists": true,
+        "gpu_temp_c": {
+          "avg": 52.968,
+          "max": 52.968,
+          "min": 52.968
+        },
+        "gr3d": {
+          "avg": 0.0,
+          "max": 0.0,
+          "min": 0.0
+        },
+        "nvdla_fields_seen": false,
+        "ram_used_mb": {
+          "avg": 3449.0,
+          "max": 3449.0,
+          "min": 3449.0
+        },
+        "samples": 1,
+        "tj_temp_c": {
+          "avg": 54.968,
+          "max": 54.968,
+          "min": 54.968
+        },
+        "vdd_in_mw": {
+          "avg": 5626.0,
+          "max": 5626.0,
+          "min": 5626.0
+        }
+      },
+      "tegrastats_log": "/home/jetson/jetson_wallfps_optimization/tegrastats/yolo26n_fp16_trtexec_raw_no_data_transfers.log",
+      "trtexec_log": "/home/jetson/jetson_wallfps_optimization/logs/yolo26n_fp16_trtexec_raw_no_data_transfers.log",
+      "trtexec_rc": -6,
+      "video_resolution": "none",
+      "wall_fps": null,
+      "wall_sec": 1.3791916399786714,
+      "warmup_sec": 10
+    }
+  ]
+}

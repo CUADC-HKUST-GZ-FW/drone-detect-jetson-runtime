@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Jetson YOLO Pipeline Log Event",
+  "type": "object",
+  "required": ["ts", "level", "event", "release_id"],
+  "properties": {
+    "ts": {
+      "type": "string",
+      "description": "ISO-8601 timestamp with timezone"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["DEBUG", "INFO", "WARN", "ERROR"]
+    },
+    "event": {
+      "type": "string",
+      "examples": ["startup", "metrics", "health", "prediction", "source_reconnect", "shutdown"]
+    },
+    "release_id": {
+      "type": "string"
+    },
+    "config_hash": {
+      "type": ["string", "null"]
+    },
+    "source": {
+      "type": ["string", "null"]
+    },
+    "frame_id": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "health_state": {
+      "type": ["string", "null"],
+      "enum": ["STARTING", "VALIDATING", "RUNNING", "DEGRADED", "FAILED", "STOPPING", null]
+    },
+    "wall_fps": {
+      "type": ["number", "null"]
+    },
+    "latency_ms_p50": {
+      "type": ["number", "null"]
+    },
+    "latency_ms_p90": {
+      "type": ["number", "null"]
+    },
+    "latency_ms_p99": {
+      "type": ["number", "null"]
+    },
+    "gr3d_avg_pct": {
+      "type": ["number", "null"]
+    },
+    "gr3d_max_pct": {
+      "type": ["number", "null"]
+    },
+    "gpu_temp_c_max": {
+      "type": ["number", "null"]
+    },
+    "cpu_temp_c_max": {
+      "type": ["number", "null"]
+    },
+    "vdd_in_w_avg": {
+      "type": ["number", "null"]
+    },
+    "detections": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["class_id", "conf", "xyxy"],
+        "properties": {
+          "class_id": {"type": "integer"},
+          "class_name": {"type": ["string", "null"]},
+          "conf": {"type": "number"},
+          "xyxy": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {"type": "number"}
+          }
+        }
+      }
+    },
+    "message": {
+      "type": ["string", "null"]
+    },
+    "error": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": true
+}
+

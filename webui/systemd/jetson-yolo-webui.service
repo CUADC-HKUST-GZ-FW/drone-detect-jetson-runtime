@@ -1,0 +1,26 @@
+[Unit]
+Description=Jetson YOLO Pipeline WebUI
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Service]
+Type=simple
+Environment=JETSON_WEBUI_HOST=127.0.0.1
+Environment=JETSON_WEBUI_PORT=8765
+EnvironmentFile=-/etc/jetson-yolo-webui.env
+WorkingDirectory=/opt/jetson-yolo-webui/current/webui
+ExecStart=/usr/bin/python3 /opt/jetson-yolo-webui/current/webui/server.py --host ${JETSON_WEBUI_HOST} --port ${JETSON_WEBUI_PORT}
+Restart=always
+RestartSec=2
+TimeoutStartSec=30
+TimeoutStopSec=15
+KillSignal=SIGINT
+KillMode=mixed
+StandardOutput=append:/opt/jetson-yolo-webui/runtime/webui.log
+StandardError=append:/opt/jetson-yolo-webui/runtime/webui.err.log
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

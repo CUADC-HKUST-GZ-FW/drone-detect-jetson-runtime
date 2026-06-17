@@ -1,0 +1,128 @@
+app:
+  name: yolo-pipeline
+  release_id: 2026-06-06_001
+  mode: production
+  profile: production
+
+paths:
+  release_root: /opt/yolo-pipeline/current
+  log_dir: /var/log/yolo-pipeline
+  metrics_dir: /var/log/yolo-pipeline/metrics
+  tegrastats_log: /var/log/yolo-pipeline/tegrastats.log
+
+runtime:
+  device: cuda:0
+  strict_resolution: true
+  slots: 4
+  warmup_frames: 120
+  fail_on_shape_mismatch: true
+  fail_on_source_open_error: true
+
+source:
+  kind: file
+  uri: /home/jetson/jetson_benchmark_assets/videos/benchmark_5min_1080p30_coco_val2017_synthetic.mp4
+  expected_width: 1920
+  expected_height: 1080
+  expected_fps: 30
+  reconnect:
+    enabled: false
+    max_retries: 3
+    retry_delay_sec: 2
+
+pipeline:
+  input_canvas_width: 1024
+  input_canvas_height: 1024
+  letterbox_value: 114
+  color_order: bgr_input_rgb_tensor
+  normalize: "0_1"
+  gstreamer:
+    use_hw_decode: true
+    decoder: nvv4l2decoder
+    decoder_options:
+      enable-max-performance: 1
+    converter: nvvidconv
+    compositor: nvcompositor
+    appsink:
+      drop: true
+      sync: false
+      max_buffers: 4
+
+models:
+  stage1:
+    enabled: true
+    id: yolo26n_1024_fp16
+    role: location
+    engine: /opt/yolo-pipeline/current/engines/yolo26n_1024_fp16.raw.engine
+    metadata: /opt/yolo-pipeline/current/metadata/engine_metadata_stage1.json
+    requested_imgsz: [1024, 1024]
+    actual_imgsz: [1024, 1024]
+    precision: fp16
+    input_tensor: images
+    output_tensor: output0
+  stage2:
+    enabled: true
+    id: yolo26n_requested400_actual416_fp16
+    role: type_decision
+    engine: /opt/yolo-pipeline/current/engines/yolo26n_requested400_actual416_fp16.raw.engine
+    metadata: /opt/yolo-pipeline/current/metadata/engine_metadata_stage2.json
+    requested_imgsz: [400, 400]
+    actual_imgsz: [416, 416]
+    precision: fp16
+    input_tensor: images
+    output_tensor: output0
+
+cascade:
+  enabled: true
+  mode: pipeline_parallel
+  stage1_uses_class_for_location_only: true
+  selection:
+    method: highest_confidence
+    min_conf: 0.25
+    fallback_on_no_box: center_crop
+  crop:
+    scale: 1.15
+    clamp_to_frame: true
+    letterbox_value: 114
+
+postprocess:
+  conf_threshold: 0.25
+  iou_threshold: 0.70
+  max_detections: 300
+  publish_empty_frames: true
+
+outputs:
+  jsonl:
+    enabled: true
+    path: /var/log/yolo-pipeline/results.jsonl
+  overlay_video:
+    enabled: false
+  save_frames:
+    enabled: false
+
+monitoring:
+  tegrastats: true
+  metrics_interval_sec: 5
+  health_interval_sec: 2
+  warn:
+    wall_fps_min: 80
+    gpu_temp_c_max: 75
+  fail:
+    no_frame_timeout_sec: 5
+    gpu_temp_c_max: 85
+
+profiles:
+  production:
+    per_frame_stdout: false
+    save_frames: false
+    draw_overlay: false
+  benchmark:
+    per_frame_stdout: false
+    save_frames: false
+    draw_overlay: false
+    metrics_interval_sec: 1
+  debug:
+    per_frame_stdout: false
+    save_frames: true
+    draw_overlay: true
+    metrics_interval_sec: 1
+

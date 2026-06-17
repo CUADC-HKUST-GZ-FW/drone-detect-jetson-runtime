@@ -1,7 +1,0 @@
-stream:
-  protocol: rtp-h264-udp
-  port: 5000
-  duration_seconds: 60
-  source: assets/test_60s.mp4
-  receiver_output: results/baseline/received.ts
-

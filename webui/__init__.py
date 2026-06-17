@@ -1,1 +1,0 @@
-"""Drone Detect WebUI package."""

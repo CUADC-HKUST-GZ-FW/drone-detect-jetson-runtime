@@ -1,0 +1,72 @@
+release_id: 2026-06-06_001
+created_at: "2026-06-06T00:00:00+08:00"
+target_device:
+  model: Jetson Orin NX Super
+  l4t: R36.5
+  cuda: null
+  tensorrt: "10.3.x"
+  cudnn: null
+
+datasets:
+  train:
+    id: custom_dataset_v001
+    path: /data/datasets/custom_dataset_v001/data.yaml
+    notes: "Scene-separated train/val/test split."
+  calibration:
+    id: coco_val2017_calib1000
+    path: /home/jetson/jetson_benchmark_assets/coco_val2017_calib.yaml
+    image_count: 1000
+    quality: strong
+
+models:
+  - id: yolo26n_1024_fp16
+    role: stage1_location
+    task: detect
+    source_pt: models/yolo26n_custom_best.pt
+    ultralytics_engine: engines/yolo26n_1024_fp16.engine
+    raw_engine: engines/yolo26n_1024_fp16.raw.engine
+    metadata_json: metadata/engine_metadata_stage1.json
+    requested_imgsz: [1024, 1024]
+    actual_imgsz: [1024, 1024]
+    precision: fp16
+    class_names:
+      0: target
+    export:
+      command: "yolo export model=models/yolo26n_custom_best.pt format=engine imgsz=1024 half=True device=0 workspace=4"
+      exported_on: jetson-orin-nx-super
+    validation:
+      pytorch_map50_95: null
+      tensorrt_map50_95: null
+      strict_1024_cpp_wall_fps: 103.0
+      accepted: false
+      acceptance_notes: "Fill with validation result before production."
+
+  - id: yolo26n_requested400_actual416_fp16
+    role: stage2_type_decision
+    task: detect
+    source_pt: models/yolo26n_stage2_best.pt
+    ultralytics_engine: engines/yolo26n_requested400_actual416_fp16.engine
+    raw_engine: engines/yolo26n_requested400_actual416_fp16.raw.engine
+    metadata_json: metadata/engine_metadata_stage2.json
+    requested_imgsz: [400, 400]
+    actual_imgsz: [416, 416]
+    precision: fp16
+    class_names:
+      0: type_a
+      1: type_b
+    export:
+      command: "yolo export model=models/yolo26n_stage2_best.pt format=engine imgsz=400 half=True device=0 workspace=4"
+      exported_on: jetson-orin-nx-super
+      notes: "Ultralytics adjusted requested 400 to actual 416 because max stride is 32."
+    validation:
+      crop_validation_accuracy: null
+      cascade_end_to_end_accuracy: null
+      accepted: false
+      acceptance_notes: "Fill with crop and cascade validation before production."
+
+hashes:
+  config_sha256: null
+  engine_sha256:
+    yolo26n_1024_fp16: null
+    yolo26n_requested400_actual416_fp16: null
+

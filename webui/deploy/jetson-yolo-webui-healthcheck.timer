@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Jetson YOLO WebUI healthcheck periodically
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=30s
+AccuracySec=5s
+Unit=jetson-yolo-webui-healthcheck.service
+
+[Install]
+WantedBy=timers.target

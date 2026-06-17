@@ -1,0 +1,27 @@
+[Unit]
+Description=Jetson YOLO TensorRT Pipeline
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jetson
+Group=jetson
+WorkingDirectory=/opt/yolo-pipeline/current
+Environment=YOLO_PIPELINE_CONFIG=/opt/yolo-pipeline/current/config/pipeline_config.yaml
+ExecStartPre=/opt/yolo-pipeline/current/bin/yolo_pipeline_runner --config /opt/yolo-pipeline/current/config/pipeline_config.yaml --validate-only
+ExecStart=/opt/yolo-pipeline/current/bin/yolo_pipeline_runner --config /opt/yolo-pipeline/current/config/pipeline_config.yaml
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=30
+TimeoutStopSec=15
+KillSignal=SIGINT
+StandardOutput=append:/var/log/yolo-pipeline/service.log
+StandardError=append:/var/log/yolo-pipeline/service.err.log
+
+# Tighten after validating camera/GStreamer permissions in the target deployment.
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,201 +1,154 @@
-# Drone Detect Jetson Runtime
+# Jetson Orin NX YOLO26n TensorRT Pipeline
 
-Portable Jetson/AGX reference implementation for high-throughput YOLO video
-inference, two-node streaming experiments, traffic-control experiments, and an
-optional local WebUI.
+Reusable Jetson Orin NX YOLO26n acceleration package with documentation, a lightweight WebUI, C++ TensorRT/GStreamer runner sources, deployment templates, and sanitized benchmark summaries.
 
-This repository is intentionally source-only. Model weights, TensorRT engines,
-videos, datasets, virtual environments, and benchmark outputs are ignored so
-the project can be pushed to GitHub without large binary history.
+It covers two connected workflows:
 
-## What Is Included
+1. Build or fine-tune a YOLO model from a custom training set.
+2. Deploy the trained model into a high performance Jetson C++/TensorRT/GStreamer pipeline.
 
-- Native C++ TensorRT video runners for Jetson/AGX.
-- GStreamer hardware decode paths using `nvv4l2decoder` and `nvvidconv`.
-- Pinned-slot C++ inference pipeline using TensorRT `enqueueV3`.
-- Python helpers for YOLO smoke tests, TensorRT export, and Ultralytics engine stripping.
-- Two-node sender/receiver scripts for RTP/H.264 test streams.
-- JSON-to-`tc` policy tooling with dry-run, apply, status, clear, and rollback support.
-- MQTT edge-agent mode for telemetry and validated remote policy updates.
-- Optional FastAPI WebUI/runner services through Docker Compose.
-- Unit tests for model aliasing and traffic-control command generation.
+Current tested deployment context:
 
-## Runtime Strategy
+- Device: NVIDIA Jetson Orin NX Super
+- Jetson Linux: R36.5
+- Main runtime stack: CUDA, TensorRT 10.3, GStreamer NVIDIA plugins, C++ TensorRT runners
+- Primary model used in benchmarks: `yolo26n`
+- Best single-model strict `1024x1024` path: about `103 FPS`
+- Best cascaded path:
+  - `800 + requested400_actual416`: about `113 FPS`
+  - `1024 + requested400_actual416`: about `87.5 FPS`
 
-For production-style FPS, avoid putting Ultralytics `model.predict()` in the
-frame loop. Use:
+Important naming note:
 
-```text
-video or camera source
-  -> GStreamer hardware decode
-  -> nvvidconv scaling before appsink
-  -> C++ pinned-slot preprocessing
-  -> TensorRT raw engine enqueueV3
-  -> C++ timing/result handling
-```
+- User-facing "400x400" YOLO export becomes `416x416` for this YOLO model because max stride is 32.
+- Do not silently call it a true 400 engine. Use `requested400_actual416` in scripts and reports.
 
-See `docs/native-trt-pipeline.md` and `docs/portable-deployment.md`.
+## Repository Contents
 
-## Safety Defaults
+- `webui/`: dependency-free Python standard-library WebUI and API for local or token-protected Jetson operations.
+- `native/`: C++ TensorRT runner sources and a Jetson-oriented Makefile.
+- `templates/`: production config, model manifest, log schema, metrics schema, and systemd templates.
+- `reports/`: sanitized benchmark summaries from the Jetson Orin NX optimization work.
+- `scripts/`: benchmark summarization and wall-FPS experiment helpers.
+- `ARTIFACTS.md`: policy for engines, weights, videos, logs, and release artifacts that must stay out of git.
 
-- `tc` defaults to dry-run.
-- `apply` requires `sudo`, `--apply`, `--yes`, and auto rollback.
-- The tool refuses the active SSH interface unless `--allow-ssh-interface` is passed.
-- Passwords, private keys, and real node-specific env files are not stored in this repository.
-- Python packages should be installed into project `.venv`; do not upgrade JetPack, CUDA, or system Python blindly.
-- The WebUI can trigger privileged runner actions for `tc`; expose port `18080` only on a trusted lab network or put it behind SSH forwarding, VPN, or external authentication.
+This repository intentionally does not include model weights, TensorRT engines, videos, raw logs, tegrastats captures, or compiled C++ binaries.
 
-## Repository Layout
+## Quick Start
 
-```text
-native/        C++ TensorRT runners and Makefile
-scripts/       setup, export, benchmark, stream, metrics, tc, and MQTT helpers
-configs/       example stream and network policy configs
-deploy/        public env examples and MQTT broker config
-docs/          deployment, benchmark, runbook, and release notes
-webui/         optional FastAPI UI and runner API
-tests/         Python unit tests
-assets/        local media folder; videos are ignored by Git
-```
-
-## Quick Start On A New Jetson/AGX
+Run the WebUI locally on a Jetson:
 
 ```bash
-git clone <repo-url> drone-detect
-cd drone-detect
-python3 -m venv .venv
-. .venv/bin/activate
-python -m pip install -U pip
-python -m pip install -r requirements-webui.txt
-```
-
-Add local artifacts without committing them:
-
-```bash
-cp /path/to/yolo26n.pt ./yolo26n.pt
-mkdir -p assets models/trt
-cp /path/to/test_20s.mp4 assets/test_20s.mp4
-```
-
-Build native runners:
-
-```bash
-make -C native -j"$(nproc)"
-```
-
-Export TensorRT on the target machine:
-
-```bash
-.venv/bin/python scripts/export_yolo_engine.py --model yolo26n.pt --imgsz 1024 --device 0 --half true --workspace 4
-.venv/bin/python scripts/strip_ultralytics_engine.py models/trt/yolo26n_1024_fp16_ultralytics.engine --verify
-```
-
-Run native benchmark:
-
-```bash
-WARMUP=3 MEASURE=20 TARGET=1024 SLOTS=4 CAPS_W=1024 CAPS_H=576 MODE=pipeline \
-  bash scripts/run_native_trt_benchmark.sh models/trt/yolo26n_1024_fp16_ultralytics.raw.engine assets/test_20s.mp4
-```
-
-## Common Commands
-
-Inventory:
-
-```bash
-bash scripts/inventory.sh --node jetson-a
-```
-
-Baseline stream:
-
-```bash
-# Receiver first
-bash scripts/start_receiver.sh --port 5000 --duration 60 --output results/baseline/received.ts
-
-# Sender second
-bash scripts/start_sender.sh --dest <JETSON_B_IP> --port 5000 --duration 60 --source testsrc
-```
-
-Metrics:
-
-```bash
-python3 scripts/collect_metrics.py --interface eth0 --duration 60 --output results/baseline/metrics.jsonl --include-tc
-```
-
-YOLO26n Python smoke test:
-
-```bash
-. .venv/bin/activate
-python scripts/run_yolo_video.py --model yolov26n --source assets/test_20s.mp4 --output-dir results/yolo --device 0
-```
-
-The alias `yolov26n` resolves to `yolo26n.pt`.
-
-Native TensorRT YOLO26n:
-
-```bash
-make -C native -j"$(nproc)"
-.venv/bin/python scripts/export_yolo_engine.py --model yolo26n.pt --imgsz 1024 --device 0 --half true --workspace 4
-.venv/bin/python scripts/strip_ultralytics_engine.py models/trt/yolo26n_1024_fp16_ultralytics.engine --verify
-WARMUP=3 MEASURE=20 TARGET=1024 SLOTS=4 CAPS_W=1024 CAPS_H=576 MODE=pipeline \
-  bash scripts/run_native_trt_benchmark.sh models/trt/yolo26n_1024_fp16_ultralytics.raw.engine assets/test_20s.mp4
-```
-
-Compose/WebUI:
-
-```bash
-cp deploy/jetson.sender.env.example deploy/jetson.sender.env
-NODE_ROLE=sender HOST_PROJECT_DIR="$PWD" DRONE_INTERFACE=eth0 docker compose up -d
-```
-
-MQTT edge agent:
-
-```bash
-EDGE_NODE_ID=jetson_sender NODE_ROLE=sender MQTT_HOST=<MQTT_HOST> DRONE_INTERFACE=eth0 docker compose up -d
+cd webui
+python3 server.py --host 127.0.0.1 --port 8765
 ```
 
 Open:
 
 ```text
-http://<JETSON_IP>:18080
+http://127.0.0.1:8765
 ```
 
-Network policy dry-run:
+Build the native C++ runners on the target Jetson:
 
 ```bash
-python3 scripts/tc_apply.py --config configs/degraded_policy.example.json --set-dst-ip <JETSON_B_IP> --dry-run
+make -C native
 ```
 
-Network policy apply:
+For remote access to the WebUI, set `JETSON_WEBUI_TOKEN` or use SSH forwarding. The server refuses non-loopback binds without a token by default.
+
+## Documents
+
+- [01 Dataset And Fine-Tuning](01_dataset_and_finetuning.md)
+- [02 Export And Validation](02_export_and_validation.md)
+- [03 High Performance C++ Pipeline](03_high_performance_cpp_pipeline.md)
+- [04 Cascaded Detection Pipeline](04_cascade_detection_pipeline.md)
+- [05 Agent Runbook](05_agent_runbook.md)
+- [06 Troubleshooting And Checklists](06_troubleshooting_and_checklists.md)
+- [07 Production Deployment Guide](07_production_deployment_guide.md)
+- [08 Runtime Config Templates](08_runtime_config_templates.md)
+- [09 Observability And Operations](09_observability_and_operations.md)
+- [10 Release Acceptance Checklist](10_release_acceptance_checklist.md)
+- [11 Lightweight WebUI Service](11_lightweight_webui_service.md)
+- [12 Service Deployment And Versioning](12_service_deployment_and_versioning.md)
+- [13 High-Risk And Low-Resource Design](13_high_risk_low_resource_design.md)
+
+## Templates
+
+- [Pipeline config example](templates/pipeline_config.example.yaml)
+- [Model manifest example](templates/model_manifest.example.yaml)
+- [Log schema](templates/log_schema.json)
+- [Metrics schema](templates/metrics_schema.md)
+- [Acceptance report template](templates/acceptance_report_template.md)
+- [systemd service template](templates/systemd/yolo-pipeline.service)
+- [WebUI service](webui/README.md)
+- [WebUI API](webui/API.md)
+- [WebUI systemd template](webui/systemd/jetson-yolo-webui.service)
+- [Deployable WebUI env example](webui/deploy/jetson-yolo-webui.env.example)
+- [Deployable WebUI systemd unit](webui/deploy/jetson-yolo-webui.service)
+- [Deployable WebUI healthcheck service](webui/deploy/jetson-yolo-webui-healthcheck.service)
+- [Deployable WebUI healthcheck timer](webui/deploy/jetson-yolo-webui-healthcheck.timer)
+- [Deployable WebUI access configurator](webui/deploy/configure_access.sh)
+- [Deployable WebUI verifier](webui/deploy/verify_deployment.sh)
+- [Native runner build notes](native/README.md)
+- [Benchmark report notes](reports/README.md)
+- [Artifact policy](ARTIFACTS.md)
+
+## Production Deployment Package
+
+A production-ready release should contain:
+
+- raw TensorRT engines
+- extracted engine metadata
+- immutable model manifest
+- runtime config
+- benchmark and tegrastats summaries
+- acceptance report
+- rollback target
+
+Use the production guide and templates before moving from benchmark scripts to a long-running service.
+
+## Current Jetson Result Paths
+
+Single-model optimization:
 
 ```bash
-sudo python3 scripts/tc_apply.py --config configs/degraded_policy.example.json --set-dst-ip <JETSON_B_IP> --apply --yes --allow-ssh-interface
-python3 scripts/tc_apply.py --confirm <TOKEN>
+~/jetson_90fps_yolo26n800/
+~/jetson_90fps_yolo26n1024/
+~/jetson_wallfps_optimization/
 ```
 
-## Docs
-
-- `docs/portable-deployment.md`
-- `docs/artifacts.md`
-- `docs/native-trt-pipeline.md`
-- `docs/runbook.md`
-- `docs/network-policy-schema.md`
-- `docs/experiment-report.md`
-- `docs/github-release-checklist.md`
-
-## GitHub Readiness
-
-Before pushing:
+Cascaded benchmark:
 
 ```bash
-python3 -m pytest
-git ls-files | grep -E '\.(pt|onnx|engine|raw\.engine|mp4|zip|tar|gz)$' && exit 1 || true
+~/jetson_cascade_benchmark/
+~/jetson_wallfps_optimization/cascade/
 ```
 
-Model weights, TensorRT engines, and videos should be published through
-GitHub Releases, Git LFS, object storage, or a private artifact store. See
-`docs/artifacts.md`.
+Benchmark assets:
 
-## License
+```bash
+~/jetson_benchmark_assets/
+```
 
-This repository is MIT licensed. Third-party runtimes, including NVIDIA
-JetPack/TensorRT and Ultralytics, have their own licenses and deployment terms.
+## Core Principles
+
+- Train on a sufficiently powerful GPU workstation when possible; use Jetson for target export, validation, and deployment benchmarking.
+- Always validate `torch.cuda.is_available()` when using PyTorch on Jetson.
+- Build TensorRT engines on the target Jetson or with exactly matching TensorRT/CUDA versions.
+- Keep inference resolution, precision, preprocessing, and postprocessing explicit in every report.
+- Keep requested and actual engine sizes separate.
+- For Jetson throughput, avoid Ultralytics `predict()` loops in production. Use C++ TensorRT with preallocated buffers.
+- Use GStreamer/NVIDIA decode and scaling before CPU appsink whenever possible.
+- Record tegrastats for GPU utilization, temperatures, RAM, and power.
+- Do not treat a synthetic COCO-val stream as a real camera validation result.
+- Do not ship a release without a rollback path.
+
+## Official References
+
+- Ultralytics custom training and dataset docs: https://docs.ultralytics.com/modes/train/
+- Ultralytics dataset format docs: https://docs.ultralytics.com/datasets/
+- Ultralytics export docs: https://docs.ultralytics.com/modes/export/
+- NVIDIA TensorRT documentation: https://docs.nvidia.com/deeplearning/tensorrt/
+- NVIDIA Jetson Linux and multimedia docs: https://docs.nvidia.com/jetson/
+- NVIDIA Accelerated GStreamer guide for Jetson: https://docs.nvidia.com/jetson/archives/r36.4.4/DeveloperGuide/SD/Multimedia/AcceleratedGstreamer.html

@@ -1,62 +1,54 @@
-# Python and local tooling
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
+.DS_Store
 .pytest_cache/
-.ruff_cache/
-.mypy_cache/
 .venv/
 venv/
+env/
 
-# macOS/editor noise
-.DS_Store
-.idea/
-.vscode/
-
-# Local results and runtime state
-results/
+webui/runtime/
+webui/*.log
+webui/*.err.log
+runtime/
+runs/
 logs/
-*.log
-*.pid
-*.token
-*.before
-*.tmp
+tegrastats/
+results/
 
-# Lab-local audit notes. Keep sanitized summaries in docs if they are useful.
-docs/environment-audit.md
-docs/environment-completion.md
+*.tar.gz
+*.zip
+*.tar
+*.tgz
 
-# Private deployment overrides. Commit only *.example files.
-deploy/*.env
-!deploy/*.env.example
-.env
-.env.*
+local.env
+*.local.yaml
+*.local.json
+*.env
 !.env.example
+!*.env.example
 
-# Large model/runtime artifacts. Publish these through releases, LFS, or object storage.
-models/
-weights/
+# Model, dataset, benchmark, and generated TensorRT artifacts stay out of git.
 *.pt
 *.pth
 *.onnx
 *.engine
-*.raw.engine
-*.cache
 *.plan
+*.trt
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.ts
+*.bag
+*.jpg
+*.jpeg
+*.png
+*.npy
+*.npz
 
-# Videos and datasets
-assets/*.mp4
-assets/*.mkv
-assets/*.ts
-assets/*.avi
-assets/*.mov
-datasets/
-data/
-
-# Native build outputs and copied kernel modules
-build/
+# Native build outputs.
 native/build/
 native/*_runner
-*.o
-*.so
-*.ko
+native/*_runner_*
+!native/*.cpp
+!native/README.md
